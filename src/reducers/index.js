@@ -11,7 +11,8 @@ function rootReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_ARTICLE: {
             return { 
-                articles: [ {...state,  text: action.text, context: action.text } ]
+                ...state,
+                articles: action.payload
             } 
         }
     }

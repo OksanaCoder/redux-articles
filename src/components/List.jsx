@@ -14,8 +14,10 @@ const List = ({ articles }) => {
             <h4 className='mt-5'>List of articles</h4>
             <ul className='list-unstyled mt-5'>
                 { articles.map(el => (
-                    <li className='box' key={el.id}>{el.title}
-                    {el.content}
+                    <li className='box' key={el.id}>
+                        <h5>{el.title}</h5>
+                        <span>{el.content}</span>
+                   
                     </li>
                 ))}
             </ul>

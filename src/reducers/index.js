@@ -2,7 +2,7 @@ import { ADD_ARTICLE } from '../actions/index'
 
 const initialState = {
     articles : [
-        { title: 'Article 1', id: 1},
+        { title: 'Article 1', id: 1, content: 'Description'},
         { title: 'Article 2', id: 2},
         { title: 'Article 3', id: 3}
     ]

@@ -12,7 +12,7 @@ function rootReducer(state = initialState, action) {
         case ADD_ARTICLE: {
             return { 
                 ...state,
-                articles: action.payload
+                articles: [...state.articles, action.payload]
             } 
         }
     }

@@ -2,12 +2,13 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import FormArticle from './FormArticle'
+import  { deleteArticle } from '../actions/index'
 
 const mapStateToProps = state => {
     return { articles: state.articles }
 }
 
-const List = ({ articles }) => {
+const List = ({ articles,  deleteArticle}) => {
   
     return(
         <Container>
@@ -17,7 +18,8 @@ const List = ({ articles }) => {
                     <li className='box' key={el.id}>
                         <h5>{el.title}</h5>
                         <span>{el.content}</span>
-                   
+                    
+                    <button onClick={() => deleteArticle(el.id)}>Delete</button>
                     </li>
                 ))}
             </ul>
@@ -25,5 +27,9 @@ const List = ({ articles }) => {
         </Container>
     )
 }
-
-export default connect(mapStateToProps)(List)
+ function mapDispatchToProps(dispatch) {
+        return {
+            deleteArticle: article => dispatch(deleteArticle(article))
+        }
+    }
+export default connect(mapStateToProps, mapDispatchToProps)(List)

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Container, Form, Button, Modal } from 'react-bootstrap'
 import  { addArticle } from '../actions/index'
 import { connect, useDispatch } from 'react-redux'
+import { v4 as uuidv4 } from 'uuid';
 
 // function mapDispatchToProps(dispatch) {
 //     return {
@@ -24,7 +25,7 @@ const FormArticle = ({addArticle}) => {
         setShow(false)
         setTitle('')
         setContent('')
-        addArticle({ title, content})
+        addArticle({ id: uuidv4(), title, content})
     }
     const handleShow = () => setShow(true);
 

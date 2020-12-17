@@ -1,5 +1,4 @@
-import { ADD_ARTICLE } from '../actions/index'
-import { DELETE_ARTICLE } from '../actions/index'
+import { ADD_ARTICLE, DELETE_ARTICLE, EDIT_ARTICLE } from '../actions/index'
 
 const initialState = {
     articles : [
@@ -20,6 +19,20 @@ function rootReducer(state = initialState, action) {
             return { 
                 ...state,
                 articles:  state.articles.filter(i => i.id !== action.payload) 
+            } 
+        }
+        case EDIT_ARTICLE: {
+            const artToEdit = state.articles.find(i => i.id == action.payload) 
+            const articles = [...state.articles]
+            state.articles[artToEdit] =  { 
+                id: action.payload.id, 
+                title: action.payload.title, 
+                content: action.payload.content
+             }
+
+            return { 
+                ...state,
+                articles 
             } 
         }
     }

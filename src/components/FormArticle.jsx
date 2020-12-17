@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container, Form, Button, Modal } from 'react-bootstrap'
-import  { addArticle } from '../actions/index'
-import { connect, useDispatch } from 'react-redux'
+import  { addArticle, editArticle } from '../actions/index'
+import { connect } from 'react-redux'
 import { v4 as uuidv4 } from 'uuid';
 
 // function mapDispatchToProps(dispatch) {
@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 // }
 
 
-const FormArticle = ({addArticle}) => {
+const FormArticle = ({addArticle, editArticle}) => {
     
     
     const [show, setShow] = useState(false);
@@ -86,7 +86,7 @@ const FormArticle = ({addArticle}) => {
         </Container>
     )
 }
-const mapDispatchToProps = { addArticle };
+const mapDispatchToProps = { addArticle, editArticle };
 
 export default connect(
     null,

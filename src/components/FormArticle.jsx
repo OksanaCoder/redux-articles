@@ -11,7 +11,7 @@ import { v4 as uuidv4 } from 'uuid';
 // }
 
 
-const FormArticle = ({addArticle, editArticle}) => {
+const FormArticle = ({addArticle }) => {
     
     
     const [show, setShow] = useState(false);

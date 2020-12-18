@@ -3,14 +3,18 @@ import { Container, Button, Modal, Form } from 'react-bootstrap'
 import { connect } from 'react-redux'
 import FormArticle from './FormArticle'
 import  { deleteArticle, editArticle } from '../actions/index'
+// import { v4 as uuidv4 } from 'uuid';
+
 
 const mapStateToProps = state => {
     return { articles: state.articles }
 }
 
-const List = ({ articles,  deleteArticle}) => {
+const List = ({ articles,  deleteArticle, editArticle}) => {
   
     const [show, setShow] = useState(false);
+    const [title, setTitle] = useState('')
+    const [content, setContent] = useState('')
     const handleClose = (e) => {
         e.preventDefault()
         setShow(false)
@@ -20,12 +24,11 @@ const List = ({ articles,  deleteArticle}) => {
         setShow(false)
         setTitle('')
         setContent('')
-        editArticle({  title, content})
+        editArticle({ title, content})
     }
     const handleShow = () => setShow(true);
 
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
+  
 
     const handleChange = (e) => {
         e.preventDefault()
@@ -106,6 +109,10 @@ const List = ({ articles,  deleteArticle}) => {
  function mapDispatchToProps(dispatch) {
         return {
             deleteArticle: article => dispatch(deleteArticle(article))
+           
+
         }
     }
+
+
 export default connect(mapStateToProps, mapDispatchToProps)(List)

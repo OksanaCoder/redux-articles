@@ -22,17 +22,21 @@ function rootReducer(state = initialState, action) {
             } 
         }
         case EDIT_ARTICLE: {
-            const artToEdit = state.articles.find(i => i.id == action.payload) 
+            const artToEdit = state.articles.findIndex(i => i.id == action.payload) 
             const articles = [...state.articles]
-            state.articles[artToEdit] =  { 
-                id: action.payload.id, 
-                title: action.payload.title, 
-                content: action.payload.content
-             }
+            // articles[artToEdit] =  { 
+            //     id: action.payload.id, 
+            //     title: action.payload.title, 
+            //     content: action.payload.content
+            //  }
 
             return { 
                 ...state,
-                articles 
+                articles : {
+                    id: action.payload.id, 
+                    title: action.payload.title, 
+                    content: action.payload.content
+                }
             } 
         }
     }

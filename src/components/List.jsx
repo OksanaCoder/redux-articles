@@ -15,16 +15,15 @@ const List = ({ articles,  deleteArticle, editArticle}) => {
     const [show, setShow] = useState(false);
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const handleClose = (e) => {
-        e.preventDefault()
+    const handleClose = () => {
         setShow(false)
     } 
-    const handleSubmit = (e) => {
-        e.preventDefault()
+    const handleSubmit = (id) => {
+     
         setShow(false)
         setTitle('')
         setContent('')
-        editArticle({ title, content})
+        editArticle({ id, title, content})
     }
     const handleShow = () => setShow(true);
 
@@ -92,7 +91,7 @@ const List = ({ articles,  deleteArticle, editArticle}) => {
                     <Button variant="secondary" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={handleSubmit}>
+                    <Button variant="primary" onClick={() => handleSubmit(el.id)}>
                         Save Changes
                     </Button>
                     </Modal.Footer>
@@ -106,13 +105,7 @@ const List = ({ articles,  deleteArticle, editArticle}) => {
         </Container>
     )
 }
- function mapDispatchToProps(dispatch) {
-        return {
-            deleteArticle: article => dispatch(deleteArticle(article))
-           
 
-        }
-    }
-
+const mapDispatchToProps = { editArticle, deleteArticle };
 
 export default connect(mapStateToProps, mapDispatchToProps)(List)
